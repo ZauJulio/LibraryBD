@@ -66,3 +66,12 @@
 | book_author    | NOT NULL FOREIGN |              | Referência para um ou mais autores.             |                         |
 | book_publisher | NOT NULL FOREIGN |              | Referência para uma editora.                    |                         |
 
+# Tabela: Empréstimo
+
+| Nome do campo | Chave            | Tipo de dado | Descrição do Campo                              | Tamanho do Campo(bytes) |
+|---------------|------------------|--------------|-------------------------------------------------|-------------------------|
+| id            | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
+| deadline      | NOT NULL         | NUMERIC      | Identificador único do livro.                   | 8                       |
+| expedition    | NOT NULL         | NUMERIC      | Identificador da unidade.                       | 8                       |
+| loan_book     | NOT NULL FOREIGN |              | Referência para um livro.                       |                         |
+| loan_user     | NOT NULL FOREIGN |              | Referência para um usuário.                     |                         |
