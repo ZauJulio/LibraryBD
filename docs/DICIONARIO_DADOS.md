@@ -23,3 +23,15 @@
 | functionary_operation | NOT NULL FOREIGN |              | Chave para um ou mais esquemas de trabalho.          |                         |
 | functionary_adress    | NOT NULL FOREIGN |              | Chave para um endereço.                              |                         |
 
+## Tabela: Endereço
+
+| Nome do campo | Chave            | Tipo de dado | Descrição do Campo                                | Tamanho do Campo(bytes) |
+|---------------|------------------|--------------|---------------------------------------------------|-------------------------|
+| id            | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de endereço. | 4                       |
+| street        | NOT NULL         | CHAR[50]     | Rua limitada a 50 caracteres.                     | 50                      |
+| neighborhood  | NOT NULL         | CHAR[50]     | Bairro limitado a 50 caracteres.                  | 50                      |
+| zipcode       | NOT NULL         | NUMERIC      | CEP/Zip code, entrada numérica.                   | 4                       |
+| city          | NOT NULL         | CHAR[50]     | Nome da Cidade limitada a 50 caracteres.          | 50                      |
+| state         | NOT NULL         | CHAR[5]      | Acrônimo do estado até 5 caracteres.              | 5                       |
+| country       | NOT NULL         | CHAR[50]     | País limitado até 50 caracteres.                  | 50                      |
+| number        | NOT NULL         | NUMERIC      | Número da residência.                             | 4                       |
