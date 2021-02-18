@@ -1,4 +1,5 @@
 # Dicionário de Dados
+
 ## Tabela: Operation
 
 | Nome do campo         | Chave                | Tipo de dado | Descrição do Campo                                                | Tamanho do Campo(bytes) |
@@ -9,6 +10,37 @@
 | horary_start          | NOT NULL             | TIME         | Horário de fechamento com time zone.                              | 12                      |
 | workload              | NOT NULL             | NUMERIC      | Carga horário do funcionário.                                     | 4                       |
 | operation_functionary | NOT NULL FOREIGN KEY |              | Referência para um ou vários funcionários.                        |                         |
+
+# Tabela: Sessão
+
+| Nome do campo      | Chave            | Tipo de dado | Descrição do Campo                                 | Tamanho do Campo(bytes) |
+|--------------------|------------------|--------------|----------------------------------------------------|-------------------------|
+| id                 | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão.    | 4                       |
+| name               | NOT NULL         | CHAR[100]    | Nome, pode ser abreviado. Limite de 100 caracteres.| 100                     |
+| session_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.            |                         |
+
+# Tabela: Usuário
+
+| Nome do campo | Chave            | Tipo de dado      | Descrição do Campo                                      | Tamanho do Campo(bytes) |
+|---------------|------------------|-------------------|---------------------------------------------------------|-------------------------|
+| id            | NOT NULL PRIMARY | NUMERIC           | Identificador incremental do esquema de sessão.         | 4                       |
+| username      | NOT NULL         | NUMERIC           | Identificador único do livro.                           | 8                       |
+| name          | NOT NULL         | CHAR[100]         | Nome, pode ser abreviado. Limite de 100 caracteres.     | 100                     |
+| registration  | NOT NULL         | NUMERIC AUTO INC  | Mátricula auto incremental do usuário.                  | 4                       |
+| telephone     | NOT NULL         | CHAR[14]          | Telefone com formatação: (XX)XXXXX-XXXX                 | 14                      |
+| email         | NOT NULL         | CHAR[256]         | Email seguindo o limite padrão de 256 caracteres.       | 256                     |
+| password      | NOT NULL         | CHAR[32]          | Senha alfanumérica de até 32 caracteres.                | 32                      |
+| status        | NOT NULL         | NUMERIC           | Status de validade para empréstimo.                     | 4                       |
+| user_loan     | NOT NULL FOREIGN |                   | Referência para nenhum ou vários empréstimo realizados. |                         |
+| user_adress   | NOT NULL FOREIGN |                   | Referência para um endereço.                            |                         |
+
+## Tabela: Biblioteca
+
+| Nome do campo     | Chave            | Tipo de dado | Descrição do Campo                                    | Tamanho do Campo(bytes) |
+|-------------------|------------------|--------------|-------------------------------------------------------|-------------------------|
+| library_operation | NOT NULL FOREIGN |              | Referência para um ou mais esquemas de funcionamento. |                         |
+| library_user      | NOT NULL FOREIGN |              | Referência para um ou mais usuários.                  |                         |
+| library_session   | NOT NULL FOREIGN |              | Referência para uma ou mais sessões.                  |                         |
 
 ## Tabela: Funcionário
 
@@ -35,14 +67,6 @@
 | state         | NOT NULL         | CHAR[5]      | Acrônimo do estado até 5 caracteres.              | 5                       |
 | country       | NOT NULL         | CHAR[50]     | País limitado até 50 caracteres.                  | 50                      |
 | number        | NOT NULL         | NUMERIC      | Número da residência.                             | 4                       |
-
-# Tabela: Sessão
-
-| Nome do campo      | Chave            | Tipo de dado | Descrição do Campo                                 | Tamanho do Campo(bytes) |
-|--------------------|------------------|--------------|----------------------------------------------------|-------------------------|
-| id                 | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão.    | 4                       |
-| name               | NOT NULL         | CHAR[100]    | Nome, pode ser abreviado. Limite de 100 caracteres.| 100                     |
-| session_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.            |                         |
 
 # Tabela: Categoria
 
@@ -87,18 +111,8 @@
 | email          | NOT NULL         | CHAR[256]    | Email seguindo o limite padrão de 256 caracteres.  | 256                     |
 | publisher_book | NOT NULL FOREIGN |              | Referência para um ou mais livros.                 |                         |
 
-# Tabela: Usuário
 
-| Nome do campo | Chave            | Tipo de dado      | Descrição do Campo                                      | Tamanho do Campo(bytes) |
-|---------------|------------------|-------------------|---------------------------------------------------------|-------------------------|
-| id            | NOT NULL PRIMARY | NUMERIC           | Identificador incremental do esquema de sessão.         | 4                       |
-| username      | NOT NULL         | NUMERIC           | Identificador único do livro.                           | 8                       |
-| name          | NOT NULL         | CHAR[100]         | Nome, pode ser abreviado. Limite de 100 caracteres.     | 100                     |
-| registration  | NOT NULL         | NUMERIC AUTO INC  | Mátricula auto incremental do usuário.                  | 4                       |
-| telephone     | NOT NULL         | CHAR[14]          | Telefone com formatação: (XX)XXXXX-XXXX                 | 14                      |
-| email         | NOT NULL         | CHAR[256]         | Email seguindo o limite padrão de 256 caracteres.       | 256                     |
-| password      | NOT NULL         | CHAR[32]          | Senha alfanumérica de até 32 caracteres.                | 32                      |
-| status        | NOT NULL         | NUMERIC           | Status de validade para empréstimo.                     | 4                       |
-| user_loan     | NOT NULL FOREIGN |                   | Referência para nenhum ou vários empréstimo realizados. |                         |
-| user_adress   | NOT NULL FOREIGN |                   | Referência para um endereço.                            |                         |
+### Referências
+
+[Exemplo de Dicionário - IBM](https://publib.boulder.ibm.com/tividd/td/ITMFTP/GC23-4803-00/pt_BR/HTML/TMTPmst80.htm)
 
