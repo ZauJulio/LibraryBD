@@ -75,3 +75,15 @@
 | expedition    | NOT NULL         | NUMERIC      | Identificador da unidade.                       | 8                       |
 | loan_book     | NOT NULL FOREIGN |              | Referência para um livro.                       |                         |
 | loan_user     | NOT NULL FOREIGN |              | Referência para um usuário.                     |                         |
+
+# Tabela: Editora
+
+| Nome do campo  | Chave            | Tipo de dado | Descrição do Campo                                 | Tamanho do Campo(bytes) |
+|----------------|------------------|--------------|----------------------------------------------------|-------------------------|
+| id             | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de Categoria. | 4                       |
+| name           | NOT NULL         | CHAR[100]    | Nome, pode ser abreviado. Limite de 100 caracteres.| 100                     |
+| cnpj           | NOT NULL         | CHAR[100]    | Nome, pode ser abreviado. Limite de 100 caracteres.| 100                     |
+| telephone      | NOT NULL         | CHAR[14]     | Telefone com formatação: (XX)XXXXX-XXXX            | 14                      |
+| email          | NOT NULL         | CHAR[256]    | Email seguindo o limite padrão de 256 caracteres.  | 256                     |
+| publisher_book | NOT NULL FOREIGN |              | Referência para um ou mais livros.                 |                         |
+
