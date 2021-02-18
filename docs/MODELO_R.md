@@ -9,6 +9,7 @@
 * User(id, username, name, email, registration, password, status, **user_adress**, **user_loan**);
 * Adress(id, street, neighborhood, zipcode, city, state, country);
 * Book(id, isbn, unity, title, subtitle, status, gender, **book_author**, **book_publisher**, **book_category**, **book_loan**);
+* Gender(id, name);
 * Publisher(id, name, cnpj, telephone, email);
 * Author(id, name);
 * Loan(id, expedition, deadline, **loan_book**);
