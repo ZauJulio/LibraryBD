@@ -38,14 +38,31 @@
 
 # Tabela: Sessão
 
-| Nome do campo      | Chave            | Tipo de dado | Descrição do Campo                              | Tamanho do Campo(bytes) |
-|--------------------|------------------|--------------|-------------------------------------------------|-------------------------|
-| id                 | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
-| session_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.         |                         |
+| Nome do campo      | Chave            | Tipo de dado | Descrição do Campo                                 | Tamanho do Campo(bytes) |
+|--------------------|------------------|--------------|----------------------------------------------------|-------------------------|
+| id                 | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão.    | 4                       |
+| name               | NOT NULL         | CHAR[100]    | Nome, pode ser abreviado. Limite de 100 caracteres.| 100                     |
+| session_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.            |                         |
 
 # Tabela: Categoria
 
 | Nome do campo | Chave            | Tipo de dado | Descrição do Campo                                 | Tamanho do Campo(bytes) |
 |---------------|------------------|--------------|----------------------------------------------------|-------------------------|
 | id            | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de Categoria. | 4                       |
+| name          | NOT NULL         | CHAR[100]    | Nome, pode ser abreviado. Limite de 100 caracteres.| 100                     |
 | category_book | NOT NULL FOREIGN |              | Referência para um ou mais livros.                 |                         |
+
+# Tabela: Livro
+
+| Nome do campo  | Chave            | Tipo de dado | Descrição do Campo                              | Tamanho do Campo(bytes) |
+|----------------|------------------|--------------|-------------------------------------------------|-------------------------|
+| id             | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
+| isbn           | NOT NULL         | NUMERIC      | Identificador único do livro.                   | 4                       |
+| unity          | NOT NULL         | NUMERIC      | Identificador da unidade.                       | 4                       |
+| title          | NOT NULL         | CHAR[100]    | Titulo do livro limitado a 100 caracteres.      | 100                     |
+| subtitle       | NOT NULL         | CHAR[50]     | Sub-titulo do livro limitado a 50 caracteres.   | 50                      |
+| status         | NOT NULL         | NUMERIC      | Status numérico.                                | 4                       |
+| book_gender    | NOT NULL FOREIGN |              | Referência para um ou mais gêneros.             |                         |
+| book_author    | NOT NULL FOREIGN |              | Referência para um ou mais autores.             |                         |
+| book_publisher | NOT NULL FOREIGN |              | Referência para uma editora.                    |                         |
+
