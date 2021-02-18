@@ -38,7 +38,7 @@
 
 # Tabela: Sessão
 
-| Nome do campo | Chave            | Tipo de dado | Descrição do Campo                              | Tamanho do Campo(bytes) |
-|---------------|------------------|--------------|-------------------------------------------------|-------------------------|
-| id            | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
-| id_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.         |                         |
+| Nome do campo      | Chave            | Tipo de dado | Descrição do Campo                              | Tamanho do Campo(bytes) |
+|--------------------|------------------|--------------|-------------------------------------------------|-------------------------|
+| id                 | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
+| session_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.         |                         |
