@@ -42,3 +42,10 @@
 |--------------------|------------------|--------------|-------------------------------------------------|-------------------------|
 | id                 | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
 | session_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.         |                         |
+
+# Tabela: Categoria
+
+| Nome do campo | Chave            | Tipo de dado | Descrição do Campo                                 | Tamanho do Campo(bytes) |
+|---------------|------------------|--------------|----------------------------------------------------|-------------------------|
+| id            | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de Categoria. | 4                       |
+| category_book | NOT NULL FOREIGN |              | Referência para um ou mais livros.                 |                         |
