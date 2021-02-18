@@ -35,3 +35,10 @@
 | state         | NOT NULL         | CHAR[5]      | Acrônimo do estado até 5 caracteres.              | 5                       |
 | country       | NOT NULL         | CHAR[50]     | País limitado até 50 caracteres.                  | 50                      |
 | number        | NOT NULL         | NUMERIC      | Número da residência.                             | 4                       |
+
+# Tabela: Sessão
+
+| Nome do campo | Chave            | Tipo de dado | Descrição do Campo                              | Tamanho do Campo(bytes) |
+|---------------|------------------|--------------|-------------------------------------------------|-------------------------|
+| id            | NOT NULL PRIMARY | NUMERIC      | Identificador incremental do esquema de sessão. | 4                       |
+| id_category   | NOT NULL FOREIGN |              | Referência para uma ou mais categorias.         |                         |
