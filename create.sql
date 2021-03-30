@@ -1,0 +1,96 @@
+CREATE TABLE Author(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Gender(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Publisher(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  cnpj VARCHAR(14) NOT NULL,
+  telephone VARCHAR(16) NOT NULL,
+  email VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE Book(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  isbn NUMERIC NOT NULL,
+  unity NUMERIC NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  subtitle VARCHAR(50) NOT NULL,
+  status NUMERIC NOT NULL,
+  CONSTRAINT fk_book_gender FOREIGN KEY (id) REFERENCES Gender (id),
+  CONSTRAINT fk_book_author FOREIGN KEY (id) REFERENCES Author (id),
+  CONSTRAINT fk_book_publisher FOREIGN KEY (id) REFERENCES Publisher (id)
+);
+
+CREATE TABLE Functionary(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Operation(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  day NUMERIC NOT NULL,
+  horary_start TIME NOT NULL,
+  horary_end TIME NOT NULL,
+  workload NUMERIC NOT NULL,
+  CONSTRAINT fk_operation_functionary FOREIGN KEY (id) REFERENCES Functionary (id)
+);
+
+CREATE TABLE Loan(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  deadline NUMERIC NOT NULL,
+  expedition NUMERIC NOT NULL,
+  CONSTRAINT fk_loan_book FOREIGN KEY (id) REFERENCES Book (id)
+);
+
+CREATE TABLE Address(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  street VARCHAR(50) NOT NULL,
+  neighborhood VARCHAR(50) NOT NULL,
+  zipcode NUMERIC NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  state VARCHAR(5) NOT NULL,
+  country VARCHAR(50) NOT NULL,
+  number NUMERIC NOT NULL
+);
+
+CREATE TABLE User(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  username NUMERIC NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  registration NUMERIC AUTO_INCREMENT NOT NULL,
+  telephone VARCHAR(14) NOT NULL,
+  email VARCHAR(256) NOT NULL,
+  password VARCHAR(32) NOT NULL,
+  status NUMERIC NOT NULL,
+  user_loan NUMERIC NOT NULL,
+  user_address NUMERIC NOT NULL,
+  CONSTRAINT fk_user_loan FOREIGN KEY (id) REFERENCES Loan (id),
+  CONSTRAINT fk_user_address FOREIGN KEY (id) REFERENCES Address (id)
+);
+
+CREATE TABLE Category(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  CONSTRAINT fk_category_book FOREIGN KEY (id) REFERENCES Book (id)
+);
+
+CREATE TABLE Session(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  CONSTRAINT fk_session_category FOREIGN KEY (id) REFERENCES Category (id)
+);
+
+CREATE TABLE Library(
+  id NUMERIC PRIMARY KEY NOT NULL,
+  CONSTRAINT fk_library_operation FOREIGN KEY (id) REFERENCES Operation (id),
+  CONSTRAINT fk_library_user FOREIGN KEY (id) REFERENCES User (id),
+  CONSTRAINT fk_library_session FOREIGN KEY (id) REFERENCES Session (id)
+);
