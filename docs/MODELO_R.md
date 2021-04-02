@@ -1,15 +1,15 @@
 # Modelo Relacional
 
 
-* Library(**library_operation**, **library_user**, **library_session**);
-* Session(id, **session_category**);
-* Category(id, **category_book**);
-* Functionary(id, name, cpf, telephone, email, salary, **functionary_adress**, **functionary_operation**);
-* Operation(id, day, horary, workload, **operation_library**, **operation_functionary**);
-* User(id, username, name, email, registration, password, status, **user_adress**, **user_loan**);
-* Adress(id, street, neighborhood, zipcode, city, state, country);
-* Book(id, isbn, unity, title, subtitle, status, gender, **book_author**, **book_publisher**, **book_category**, **book_loan**);
-* Gender(id, name);
-* Publisher(id, name, cnpj, telephone, email);
+* Adress(id, street, neighborhood, zipcode, city, state, country, number);
 * Author(id, name);
-* Loan(id, expedition, deadline, **loan_book**);
+* Gender(id, name);
+* Category(id, name);
+* Publisher(id, name, cnpj, telephone, email, **cod_address**);
+* Book(id, isbn, unity, title, subtitle, status, **cod_author**, **cod_publisher**, **cod_category**, **cod_gender**);
+* Functionary(id, name, cpf, telephone, email, salary, **cod_address**);
+* Operation(id, name, description, day, horary_start, horary_end, workload, **cod_functionary**);
+* Library(name, **cod_operation**);
+* User(id, username, name, email, password, status, **cod_address**, **cod_library**);
+* Loan(id, expedition, deadline, **cod_book**, **cod_user**);
+* Session(id, name, **cod_category**, **cod_library**);
